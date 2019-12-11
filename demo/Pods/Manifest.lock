@@ -1,0 +1,16 @@
+PODS:
+  - IRSticker (0.1.0)
+
+DEPENDENCIES:
+  - IRSticker (from `../IRSticker.podspec`)
+
+EXTERNAL SOURCES:
+  IRSticker:
+    :path: "../IRSticker.podspec"
+
+SPEC CHECKSUMS:
+  IRSticker: a4b14fc3ef833b45b1f7f0a348429fcee5cb1ea6
+
+PODFILE CHECKSUM: 554c6c50bde95abcd9b6e27c052c99ae897ac3a6
+
+COCOAPODS: 1.8.0.beta.2

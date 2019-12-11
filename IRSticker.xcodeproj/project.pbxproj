@@ -12,6 +12,11 @@
 		8A20142823220BB600F8CAE9 /* IRStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A20142623220BB600F8CAE9 /* IRStickerView.m */; };
 		8A20142B23220CE200F8CAE9 /* IRStickerGestureRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A20142923220CE200F8CAE9 /* IRStickerGestureRecognizer.h */; };
 		8A20142C23220CE200F8CAE9 /* IRStickerGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A20142A23220CE200F8CAE9 /* IRStickerGestureRecognizer.m */; };
+		8A390EE423754AE900B2B168 /* IRSticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8A390EE323754AE900B2B168 /* IRSticker.bundle */; };
+		8A390EEA2375542A00B2B168 /* UIImage+Bundle.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A390EE62375542A00B2B168 /* UIImage+Bundle.h */; };
+		8A390EEB2375542A00B2B168 /* Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A390EE72375542A00B2B168 /* Utilities.h */; };
+		8A390EEC2375542A00B2B168 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A390EE82375542A00B2B168 /* Utilities.m */; };
+		8A390EED2375542A00B2B168 /* UIImage+Bundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A390EE92375542A00B2B168 /* UIImage+Bundle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		8A20142623220BB600F8CAE9 /* IRStickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRStickerView.m; sourceTree = "<group>"; };
 		8A20142923220CE200F8CAE9 /* IRStickerGestureRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRStickerGestureRecognizer.h; sourceTree = "<group>"; };
 		8A20142A23220CE200F8CAE9 /* IRStickerGestureRecognizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRStickerGestureRecognizer.m; sourceTree = "<group>"; };
+		8A390EE323754AE900B2B168 /* IRSticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IRSticker.bundle; sourceTree = "<group>"; };
+		8A390EE62375542A00B2B168 /* UIImage+Bundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Bundle.h"; sourceTree = "<group>"; };
+		8A390EE72375542A00B2B168 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		8A390EE82375542A00B2B168 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		8A390EE92375542A00B2B168 /* UIImage+Bundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Bundle.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +67,8 @@
 				8A2013F42321FCEF00F8CAE9 /* IRSticker.h */,
 				8A2013F52321FCEF00F8CAE9 /* Info.plist */,
 				8A20142423220B1800F8CAE9 /* Class */,
+				8A390EE52375541300B2B168 /* Utility */,
+				8A390EE323754AE900B2B168 /* IRSticker.bundle */,
 			);
 			path = IRSticker;
 			sourceTree = "<group>";
@@ -72,6 +84,17 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
+		8A390EE52375541300B2B168 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				8A390EE62375542A00B2B168 /* UIImage+Bundle.h */,
+				8A390EE92375542A00B2B168 /* UIImage+Bundle.m */,
+				8A390EE72375542A00B2B168 /* Utilities.h */,
+				8A390EE82375542A00B2B168 /* Utilities.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -79,9 +102,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A390EEA2375542A00B2B168 /* UIImage+Bundle.h in Headers */,
 				8A20142723220BB600F8CAE9 /* IRStickerView.h in Headers */,
 				8A20142B23220CE200F8CAE9 /* IRStickerGestureRecognizer.h in Headers */,
 				8A2013F62321FCEF00F8CAE9 /* IRSticker.h in Headers */,
+				8A390EEB2375542A00B2B168 /* Utilities.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A390EE423754AE900B2B168 /* IRSticker.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +178,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A390EEC2375542A00B2B168 /* Utilities.m in Sources */,
+				8A390EED2375542A00B2B168 /* UIImage+Bundle.m in Sources */,
 				8A20142C23220CE200F8CAE9 /* IRStickerGestureRecognizer.m in Sources */,
 				8A20142823220BB600F8CAE9 /* IRStickerView.m in Sources */,
 			);

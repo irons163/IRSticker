@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0ABB53C77B6D89E0B919A67C /* Pods_demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC888B5478CB0CB5C60A780 /* Pods_demo.framework */; };
 		8A20140A2321FD2400F8CAE9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2014092321FD2400F8CAE9 /* AppDelegate.m */; };
 		8A20140D2321FD2400F8CAE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A20140C2321FD2400F8CAE9 /* ViewController.m */; };
 		8A2014102321FD2400F8CAE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A20140E2321FD2400F8CAE9 /* Main.storyboard */; };
 		8A2014122321FD2500F8CAE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A2014112321FD2500F8CAE9 /* Assets.xcassets */; };
 		8A2014152321FD2500F8CAE9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A2014132321FD2500F8CAE9 /* LaunchScreen.storyboard */; };
 		8A2014182321FD2500F8CAE9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2014172321FD2500F8CAE9 /* main.m */; };
-		8A20142D232210F500F8CAE9 /* IRSticker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2014232321FD3200F8CAE9 /* IRSticker.framework */; };
-		8A20142E232210F500F8CAE9 /* IRSticker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2014232321FD3200F8CAE9 /* IRSticker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A390EF12375586700B2B168 /* sticker1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A390EEE2375586600B2B168 /* sticker1.png */; };
+		8A390EF22375586700B2B168 /* sticker3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A390EEF2375586700B2B168 /* sticker3.png */; };
+		8A390EF32375586700B2B168 /* sticker2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A390EF02375586700B2B168 /* sticker2.png */; };
+		8A390EF823756B7700B2B168 /* btn_flip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A390EF623756B7700B2B168 /* btn_flip@2x.png */; };
+		8A390EF923756B7700B2B168 /* btn_smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A390EF723756B7700B2B168 /* btn_smile@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,30 +29,10 @@
 			remoteGlobalIDString = 8A2013F12321FCEF00F8CAE9;
 			remoteInfo = IRSticker;
 		};
-		8A20142F232210F500F8CAE9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A20141E2321FD3200F8CAE9 /* IRSticker.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A2013F02321FCEF00F8CAE9;
-			remoteInfo = IRSticker;
-		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		8A201431232210F500F8CAE9 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8A20142E232210F500F8CAE9 /* IRSticker.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		0521EF1819CAC861CF84B38C /* Pods-demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.release.xcconfig"; path = "Target Support Files/Pods-demo/Pods-demo.release.xcconfig"; sourceTree = "<group>"; };
 		8A2014052321FD2400F8CAE9 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2014082321FD2400F8CAE9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8A2014092321FD2400F8CAE9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -60,6 +44,13 @@
 		8A2014162321FD2500F8CAE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A2014172321FD2500F8CAE9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A20141E2321FD3200F8CAE9 /* IRSticker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IRSticker.xcodeproj; path = ../IRSticker.xcodeproj; sourceTree = "<group>"; };
+		8A390EEE2375586600B2B168 /* sticker1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker1.png; sourceTree = "<group>"; };
+		8A390EEF2375586700B2B168 /* sticker3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker3.png; sourceTree = "<group>"; };
+		8A390EF02375586700B2B168 /* sticker2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sticker2.png; sourceTree = "<group>"; };
+		8A390EF623756B7700B2B168 /* btn_flip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_flip@2x.png"; sourceTree = "<group>"; };
+		8A390EF723756B7700B2B168 /* btn_smile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_smile@2x.png"; sourceTree = "<group>"; };
+		AEC888B5478CB0CB5C60A780 /* Pods_demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2788071E368DFEDAD2DA889 /* Pods-demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-demo.debug.xcconfig"; path = "Target Support Files/Pods-demo/Pods-demo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,19 +58,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A20142D232210F500F8CAE9 /* IRSticker.framework in Frameworks */,
+				0ABB53C77B6D89E0B919A67C /* Pods_demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69303B9DA1B8544562073B1E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2788071E368DFEDAD2DA889 /* Pods-demo.debug.xcconfig */,
+				0521EF1819CAC861CF84B38C /* Pods-demo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8A2013FC2321FD2400F8CAE9 = {
 			isa = PBXGroup;
 			children = (
 				8A20141E2321FD3200F8CAE9 /* IRSticker.xcodeproj */,
 				8A2014072321FD2400F8CAE9 /* demo */,
 				8A2014062321FD2400F8CAE9 /* Products */,
+				69303B9DA1B8544562073B1E /* Pods */,
+				9D955560A098F0D204DF5829 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +106,11 @@
 				8A2014132321FD2500F8CAE9 /* LaunchScreen.storyboard */,
 				8A2014162321FD2500F8CAE9 /* Info.plist */,
 				8A2014172321FD2500F8CAE9 /* main.m */,
+				8A390EEE2375586600B2B168 /* sticker1.png */,
+				8A390EF02375586700B2B168 /* sticker2.png */,
+				8A390EEF2375586700B2B168 /* sticker3.png */,
+				8A390EF623756B7700B2B168 /* btn_flip@2x.png */,
+				8A390EF723756B7700B2B168 /* btn_smile@2x.png */,
 			);
 			path = demo;
 			sourceTree = "<group>";
@@ -115,6 +123,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9D955560A098F0D204DF5829 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AEC888B5478CB0CB5C60A780 /* Pods_demo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,15 +138,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A20141B2321FD2500F8CAE9 /* Build configuration list for PBXNativeTarget "demo" */;
 			buildPhases = (
+				29C57DFC8FD414E92199C207 /* [CP] Check Pods Manifest.lock */,
 				8A2014012321FD2400F8CAE9 /* Sources */,
 				8A2014022321FD2400F8CAE9 /* Frameworks */,
 				8A2014032321FD2400F8CAE9 /* Resources */,
-				8A201431232210F500F8CAE9 /* Embed Frameworks */,
+				B4F9031F71629A6C86B5A521 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8A201430232210F500F8CAE9 /* PBXTargetDependency */,
 			);
 			name = demo;
 			productName = demo;
@@ -190,13 +206,60 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A390EF32375586700B2B168 /* sticker2.png in Resources */,
 				8A2014152321FD2500F8CAE9 /* LaunchScreen.storyboard in Resources */,
+				8A390EF923756B7700B2B168 /* btn_smile@2x.png in Resources */,
+				8A390EF12375586700B2B168 /* sticker1.png in Resources */,
 				8A2014122321FD2500F8CAE9 /* Assets.xcassets in Resources */,
 				8A2014102321FD2400F8CAE9 /* Main.storyboard in Resources */,
+				8A390EF22375586700B2B168 /* sticker3.png in Resources */,
+				8A390EF823756B7700B2B168 /* btn_flip@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		29C57DFC8FD414E92199C207 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-demo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4F9031F71629A6C86B5A521 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-demo/Pods-demo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A2014012321FD2400F8CAE9 /* Sources */ = {
@@ -210,14 +273,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8A201430232210F500F8CAE9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IRSticker;
-			targetProxy = 8A20142F232210F500F8CAE9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8A20140E2321FD2400F8CAE9 /* Main.storyboard */ = {
@@ -353,10 +408,11 @@
 		};
 		8A20141C2321FD2500F8CAE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2788071E368DFEDAD2DA889 /* Pods-demo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T6VV6T753H;
+				DEVELOPMENT_TEAM = F7AP32ZTM5;
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -370,10 +426,11 @@
 		};
 		8A20141D2321FD2500F8CAE9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0521EF1819CAC861CF84B38C /* Pods-demo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T6VV6T753H;
+				DEVELOPMENT_TEAM = F7AP32ZTM5;
 				INFOPLIST_FILE = demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

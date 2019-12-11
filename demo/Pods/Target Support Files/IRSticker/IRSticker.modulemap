@@ -1,0 +1,6 @@
+framework module IRSticker {
+  umbrella header "IRSticker-umbrella.h"
+
+  export *
+  module * { export * }
+}

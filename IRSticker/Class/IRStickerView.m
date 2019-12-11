@@ -8,6 +8,7 @@
 
 #import "IRStickerView.h"
 #import "IRStickerGestureRecognizer.h"
+#import "UIImage+Bundle.h"
 
 #define kStickerControlViewSize 30
 #define kStickerHalfControlViewSize 15
@@ -19,15 +20,17 @@
 
 @property (strong, nonatomic) UIImageView *contentView;
 
-@property (strong, nonatomic) UIImageView *deleteControl;
-@property (strong, nonatomic) UIImageView *resizeControl;
+@property (strong, nonatomic) UIImageView *leftTopControl;
 @property (strong, nonatomic) UIImageView *rightTopControl;
 @property (strong, nonatomic) UIImageView *leftBottomControl;
+@property (strong, nonatomic) UIImageView *rightBottomControl;
 
 @property (strong, nonatomic) CAShapeLayer *shapeLayer;
 
+@property (assign, nonatomic) BOOL enableLeftTopControl;
 @property (assign, nonatomic) BOOL enableRightTopControl;
 @property (assign, nonatomic) BOOL enableLeftBottomControl;
+@property (assign, nonatomic) BOOL enableRightBottomControl;
 
 @end
 
@@ -42,18 +45,20 @@
         self.contentImage = contentImage;
         [self addSubview:self.contentView];
         
-        self.resizeControl = [[UIImageView alloc] initWithFrame:CGRectMake(self.contentView.center.x + self.contentView.bounds.size.width / 2 - kStickerHalfControlViewSize, self.contentView.center.y + self.contentView.bounds.size.height / 2 - kStickerHalfControlViewSize, kStickerControlViewSize, kStickerControlViewSize)];
-        self.resizeControl.image = [UIImage imageNamed:@"IRStickerView.bundle/btn_resize.png"];
-        [self addSubview:self.resizeControl];
+        self.rightBottomControl = [[UIImageView alloc] initWithFrame:CGRectMake(self.contentView.center.x + self.contentView.bounds.size.width / 2 - kStickerHalfControlViewSize, self.contentView.center.y + self.contentView.bounds.size.height / 2 - kStickerHalfControlViewSize, kStickerControlViewSize, kStickerControlViewSize)];
+        self.rightBottomControl.image = [UIImage imageNamedForCurrentBundle:@"IRSticker.bundle/btn_resize.png"];
+        [self addSubview:self.rightBottomControl];
         
-        self.deleteControl = [[UIImageView alloc] initWithFrame:CGRectMake(self.contentView.center.x - self.contentView.bounds.size.width / 2 - kStickerHalfControlViewSize, self.contentView.center.y - self.contentView.bounds.size.height / 2 - kStickerHalfControlViewSize, kStickerControlViewSize, kStickerControlViewSize)];
-        self.deleteControl.image = [UIImage imageNamed:@"IRStickerView.bundle/btn_delete.png"];
-        [self addSubview:self.deleteControl];
+        self.leftTopControl = [[UIImageView alloc] initWithFrame:CGRectMake(self.contentView.center.x - self.contentView.bounds.size.width / 2 - kStickerHalfControlViewSize, self.contentView.center.y - self.contentView.bounds.size.height / 2 - kStickerHalfControlViewSize, kStickerControlViewSize, kStickerControlViewSize)];
+        self.leftTopControl.image = [UIImage imageNamedForCurrentBundle:@"IRSticker.bundle/btn_delete.png"];
+        [self addSubview:self.leftTopControl];
         
         self.rightTopControl = [[UIImageView alloc] initWithFrame:CGRectMake(self.contentView.center.x + self.contentView.bounds.size.width / 2 - kStickerHalfControlViewSize, self.contentView.center.y - self.contentView.bounds.size.height / 2 - kStickerHalfControlViewSize, kStickerControlViewSize, kStickerControlViewSize)];
+        self.rightTopControl.image = [UIImage imageNamedForCurrentBundle:@"IRSticker.bundle/btn_smile.png"];
         [self addSubview:self.rightTopControl];
         
         self.leftBottomControl = [[UIImageView alloc] initWithFrame:CGRectMake(self.contentView.center.x - self.contentView.bounds.size.width / 2 - kStickerHalfControlViewSize, self.contentView.center.y + self.contentView.bounds.size.height / 2 - kStickerHalfControlViewSize, kStickerControlViewSize, kStickerControlViewSize)];
+        self.leftBottomControl.image = [UIImage imageNamedForCurrentBundle:@"IRSticker.bundle/btn_flip.png"];
         [self addSubview:self.leftBottomControl];
         
         [self initShapeLayer];
@@ -86,19 +91,19 @@
     
     self.userInteractionEnabled = YES;
     self.contentView.userInteractionEnabled = YES;
-    self.resizeControl.userInteractionEnabled = YES;
-    self.deleteControl.userInteractionEnabled = YES;
+    self.rightBottomControl.userInteractionEnabled = YES;
+    self.leftTopControl.userInteractionEnabled = YES;
     self.rightTopControl.userInteractionEnabled = YES;
     self.leftBottomControl.userInteractionEnabled = YES;
     
     _enableRightTopControl = NO;
     _enableLeftBottomControl = NO;
+    _enableLeftTopControl = YES;
+    _enableRightBottomControl = YES;
+    self.enabledControl = YES;
     
     _enabledShakeAnimation = YES;
     self.enabledBorder = YES;
-    
-    self.enabledDeleteControl = YES;
-    self.enabledControl = YES;
 }
 
 - (void)attachGestures {
@@ -122,15 +127,11 @@
     [tapRecognizer setDelegate:self];
     [self.contentView addGestureRecognizer:tapRecognizer];
     
-    // ResizeControl
-    IRStickerGestureRecognizer *singleHandGesture = [[IRStickerGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleHandAction:) anchorView:self.contentView];
-    [self.resizeControl addGestureRecognizer:singleHandGesture];
-    
     // DeleteControl
     UITapGestureRecognizer *tapRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [tapRecognizer2 setNumberOfTapsRequired:1];
     [tapRecognizer2 setDelegate:self];
-    [self.deleteControl addGestureRecognizer:tapRecognizer2];
+    [self.leftTopControl addGestureRecognizer:tapRecognizer2];
     
     // RightTopControl
     UITapGestureRecognizer *tapRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
@@ -143,6 +144,15 @@
     [tapRecognizer4 setNumberOfTapsRequired:1];
     [tapRecognizer4 setDelegate:self];
     [self.leftBottomControl addGestureRecognizer:tapRecognizer4];
+    
+    // ResizeControl
+    IRStickerGestureRecognizer *singleHandGesture = [[IRStickerGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleHandAction:) anchorView:self.contentView];
+    [self.rightBottomControl addGestureRecognizer:singleHandGesture];
+    
+    UITapGestureRecognizer *tapRecognizer5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [tapRecognizer5 setNumberOfTapsRequired:1];
+    [tapRecognizer5 setDelegate:self];
+    [self.rightBottomControl addGestureRecognizer:tapRecognizer5];
 }
 
 #pragma mark - Handle Gestures
@@ -150,12 +160,13 @@
 - (void)handleTap:(UITapGestureRecognizer *)gesture {
     if (gesture.view == self.contentView) {
         [self handleTapContentView];
-    } else if (gesture.view == self.deleteControl) {
-        if (_enabledDeleteControl) {
-            // Default : remove from super view.
-            [self removeFromSuperview];
-            if (_delegate && [_delegate respondsToSelector:@selector(ir_StickerViewDidTapDeleteControl:)]) {
-                [_delegate ir_StickerViewDidTapDeleteControl:self];
+    } else if (gesture.view == self.leftTopControl) {
+        if (_enableLeftTopControl) {
+            if (_delegate && [_delegate respondsToSelector:@selector(ir_StickerViewDidTapLeftTopControl:)]) {
+                [_delegate ir_StickerViewDidTapLeftTopControl:self];
+            } else {
+                // Default : remove from super view.
+                [self removeFromSuperview];
             }
         }
     } else if (gesture.view == self.rightTopControl) {
@@ -168,6 +179,12 @@
         if (_enableLeftBottomControl) {
             if (_delegate && [_delegate respondsToSelector:@selector(ir_StickerViewDidTapLeftBottomControl:)]) {
                 [_delegate ir_StickerViewDidTapLeftBottomControl:self];
+            }
+        }
+    } else if (gesture.view == self.rightBottomControl) {
+        if (_enableRightBottomControl) {
+            if (_delegate && [_delegate respondsToSelector:@selector(ir_StickerViewDidTapRightBottomControl:)]) {
+                [_delegate ir_StickerViewDidTapRightBottomControl:self];
             }
         }
     }
@@ -239,13 +256,25 @@
 
 - (void)relocalControlView {
     CGPoint originalCenter = CGPointApplyAffineTransform(self.contentView.center, CGAffineTransformInvert(self.contentView.transform));
-    self.resizeControl.center = CGPointApplyAffineTransform(CGPointMake(originalCenter.x + self.contentView.bounds.size.width / 2.0f, originalCenter.y + self.contentView.bounds.size.height / 2.0f), self.contentView.transform);
-    self.deleteControl.center = CGPointApplyAffineTransform(CGPointMake(originalCenter.x - self.contentView.bounds.size.width / 2.0f, originalCenter.y - self.contentView.bounds.size.height / 2.0f), self.contentView.transform);
+    self.rightBottomControl.center = CGPointApplyAffineTransform(CGPointMake(originalCenter.x + self.contentView.bounds.size.width / 2.0f, originalCenter.y + self.contentView.bounds.size.height / 2.0f), self.contentView.transform);
+    self.leftTopControl.center = CGPointApplyAffineTransform(CGPointMake(originalCenter.x - self.contentView.bounds.size.width / 2.0f, originalCenter.y - self.contentView.bounds.size.height / 2.0f), self.contentView.transform);
     self.rightTopControl.center = CGPointApplyAffineTransform(CGPointMake(originalCenter.x + self.contentView.bounds.size.width / 2.0f, originalCenter.y - self.contentView.bounds.size.height / 2.0f), self.contentView.transform);
     self.leftBottomControl.center = CGPointApplyAffineTransform(CGPointMake(originalCenter.x - self.contentView.bounds.size.width / 2.0f, originalCenter.y + self.contentView.bounds.size.height / 2.0f), self.contentView.transform);
 }
 
 #pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.view == self.rightBottomControl && [gestureRecognizer isKindOfClass:[IRStickerGestureRecognizer class]]) {
+        if (_enableRightBottomControl) {
+            if (_delegate && [_delegate respondsToSelector:@selector(ir_StickerViewDidTapRightBottomControl:)]) {
+                [_delegate ir_StickerViewDidTapRightBottomControl:self];
+                return NO;
+            }
+        }
+    }
+    return YES;
+}
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] || [otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
@@ -262,17 +291,17 @@
         return nil;
     }
     if (_enabledControl) {
-        if ([self.resizeControl pointInside:[self convertPoint:point toView:self.resizeControl] withEvent:event]) {
-            return self.resizeControl;
-        }
-        if (_enabledDeleteControl && [self.deleteControl pointInside:[self convertPoint:point toView:self.deleteControl] withEvent:event]) {
-            return self.deleteControl;
+        if (_enableLeftTopControl && [self.leftTopControl pointInside:[self convertPoint:point toView:self.leftTopControl] withEvent:event]) {
+            return self.leftTopControl;
         }
         if (_enableRightTopControl && [self.rightTopControl pointInside:[self convertPoint:point toView:self.rightTopControl] withEvent:event]) {
             return self.rightTopControl;
         }
         if (_enableLeftBottomControl && [self.leftBottomControl pointInside:[self convertPoint:point toView:self.leftBottomControl] withEvent:event]) {
             return self.leftBottomControl;
+        }
+        if (_enableRightBottomControl && [self.rightBottomControl pointInside:[self convertPoint:point toView:self.rightBottomControl] withEvent:event]) {
+            return self.rightBottomControl;
         }
     }
     if ([self.contentView pointInside:[self convertPoint:point toView:self.contentView] withEvent:event]) {
@@ -310,35 +339,48 @@
     }
     _delegate = delegate;
     
+    if ([_delegate respondsToSelector:@selector(ir_StickerView:imageForLeftTopControl:)]) {
+        UIImage *leftTopImage = [_delegate ir_StickerView:self imageForLeftTopControl:CGSizeMake(kStickerControlViewSize, kStickerControlViewSize)];
+        self.rightTopControl.image = leftTopImage;
+        if (leftTopImage) {
+            _enableLeftTopControl = YES;
+        } else {
+            _enableLeftTopControl = NO;
+        }
+    }
     if ([_delegate respondsToSelector:@selector(ir_StickerView:imageForRightTopControl:)]) {
         UIImage *rightTopImage = [_delegate ir_StickerView:self imageForRightTopControl:CGSizeMake(kStickerControlViewSize, kStickerControlViewSize)];
+        self.rightTopControl.image = rightTopImage;
         if (rightTopImage) {
-            self.rightTopControl.image = rightTopImage;
             _enableRightTopControl = YES;
+        } else {
+            _enableRightTopControl = NO;
         }
     }
     if ([_delegate respondsToSelector:@selector(ir_StickerView:imageForLeftBottomControl:)]) {
         UIImage *leftBottomImage = [_delegate ir_StickerView:self imageForLeftBottomControl:CGSizeMake(kStickerControlViewSize, kStickerControlViewSize)];
+        self.leftBottomControl.image = leftBottomImage;
         if (leftBottomImage) {
-            self.leftBottomControl.image = leftBottomImage;
             _enableLeftBottomControl = YES;
+        } else {
+            _enableLeftBottomControl = NO;
         }
     }
-}
-
-- (void)setEnabledDeleteControl:(BOOL)enabledDeleteControl {
-    _enabledDeleteControl = enabledDeleteControl;
-    if (_enabledControl && _enabledDeleteControl) {
-        self.deleteControl.hidden = NO;
-    } else {
-        self.deleteControl.hidden = YES;
+    if ([_delegate respondsToSelector:@selector(ir_StickerView:imageForRightBottomControl:)]) {
+        UIImage *rightBottomImage = [_delegate ir_StickerView:self imageForRightBottomControl:CGSizeMake(kStickerControlViewSize, kStickerControlViewSize)];
+        self.rightBottomControl.image = rightBottomImage;
+        if (rightBottomImage) {
+            _enableRightBottomControl = YES;
+        } else {
+            _enableRightBottomControl = NO;
+        }
     }
 }
 
 - (void)setEnabledControl:(BOOL)enabledControl {
     _enabledControl = enabledControl;
-    self.deleteControl.hidden = _enabledControl ? !_enabledDeleteControl : YES;
-    self.resizeControl.hidden = !_enabledControl;
+    self.leftTopControl.hidden = !_enabledControl;
+    self.rightBottomControl.hidden = !_enabledControl;
     self.rightTopControl.hidden = !_enabledControl;
     self.leftBottomControl.hidden = !_enabledControl;
 }

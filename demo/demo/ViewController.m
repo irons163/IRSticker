@@ -37,24 +37,24 @@
     sticker1.center = self.view.center;
     sticker1.enabledControl = NO;
     sticker1.enabledBorder = NO;
-    sticker1.delegate = self;
     sticker1.tag = 1;
+    sticker1.delegate = self;
     [self.view addSubview:sticker1];
     
     IRStickerView *sticker2 = [[IRStickerView alloc] initWithContentFrame:CGRectMake(0, 0, 150, 150) contentImage:[UIImage imageNamed:@"sticker2.png"]];
     sticker2.center = self.view.center;
     sticker2.enabledControl = NO;
     sticker2.enabledBorder = NO;
-    sticker2.delegate = self;
     sticker2.tag = 2;
+    sticker2.delegate = self;
     [self.view addSubview:sticker2];
     
     IRStickerView *sticker3 = [[IRStickerView alloc] initWithContentFrame:CGRectMake(0, 0, 150, 150) contentImage:[UIImage imageNamed:@"sticker3.png"]];
     sticker3.center = self.view.center;
     sticker3.enabledControl = NO;
     sticker3.enabledBorder = NO;
-    sticker3.delegate = self;
     sticker3.tag = 3;
+    sticker3.delegate = self;
     [self.view addSubview:sticker3];
     
     [sticker1 performTapOperation];
@@ -71,11 +71,17 @@
 #pragma mark - StickerViewDelegate
 
 - (UIImage *)ir_StickerView:(IRStickerView *)stickerView imageForRightTopControl:(CGSize)recommendedSize {
-    return [UIImage imageNamed:@"StickerView.bundle/btn_smile.png"];
+    if (stickerView.tag == 1)
+        return [UIImage imageNamed:@"btn_smile.png"];
+    
+    return nil;
 }
 
 - (UIImage *)ir_StickerView:(IRStickerView *)stickerView imageForLeftBottomControl:(CGSize)recommendedSize {
-    return [UIImage imageNamed:@"StickerView.bundle/btn_flip.png"];
+    if (stickerView.tag == 1 || stickerView.tag == 2)
+        return [UIImage imageNamed:@"btn_flip.png"];
+    
+    return nil;
 }
 
 - (void)ir_StickerViewDidTapContentView:(IRStickerView *)stickerView {
@@ -89,8 +95,9 @@
     self.selectedSticker.enabledControl = YES;
 }
 
-- (void)ir_StickerViewDidTapDeleteControl:(IRStickerView *)stickerView {
+- (void)ir_StickerViewDidTapLeftTopControl:(IRStickerView *)stickerView {
     NSLog(@"Tap[%zd] DeleteControl", stickerView.tag);
+    [stickerView removeFromSuperview];
     for (UIView *subView in self.view.subviews) {
         if ([subView isKindOfClass:[IRStickerView class]]) {
             [(IRStickerView *)subView performTapOperation];

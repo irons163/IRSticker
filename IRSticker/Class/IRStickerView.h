@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface IRStickerView : UIView
 
 @property (assign, nonatomic) BOOL enabledControl; // determine the control view is shown or not, default is YES
-@property (assign, nonatomic) BOOL enabledDeleteControl; // default is YES
 @property (assign, nonatomic) BOOL enabledShakeAnimation; // default is YES
 @property (assign, nonatomic) BOOL enabledBorder; // default is YES
 
@@ -34,15 +33,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)ir_StickerViewDidTapContentView:(IRStickerView *)stickerView;
 
-- (void)ir_StickerViewDidTapDeleteControl:(IRStickerView *)stickerView;
+- (UIImage *)ir_StickerView:(IRStickerView *)stickerView imageForLeftTopControl:(CGSize)recommendedSize;
+
+- (void)ir_StickerViewDidTapLeftTopControl:(IRStickerView *)stickerView; // Effective when image is provided.
 
 - (UIImage *)ir_StickerView:(IRStickerView *)stickerView imageForRightTopControl:(CGSize)recommendedSize;
 
-- (void)ir_StickerViewDidTapRightTopControl:(IRStickerView *)stickerView; // Effective when resource is provided.
+- (void)ir_StickerViewDidTapRightTopControl:(IRStickerView *)stickerView; // Effective when image is provided.
 
 - (UIImage *)ir_StickerView:(IRStickerView *)stickerView imageForLeftBottomControl:(CGSize)recommendedSize;
 
-- (void)ir_StickerViewDidTapLeftBottomControl:(IRStickerView *)stickerView; // Effective when resource is provided.
+- (void)ir_StickerViewDidTapLeftBottomControl:(IRStickerView *)stickerView; // Effective when image is provided.
+
+- (UIImage *)ir_StickerView:(IRStickerView *)stickerView imageForRightBottomControl:(CGSize)recommendedSize;
+
+- (void)ir_StickerViewDidTapRightBottomControl:(IRStickerView *)stickerView; // Effective when image is provided.
 
 @end
 NS_ASSUME_NONNULL_END
