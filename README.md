@@ -4,6 +4,7 @@
 # IRSticker 
 
 - IRSticker is a powerful sticker for iOS.
+- See swift version in here: [IRSticker-swift](https://github.com/irons163/IRSticker-swift).
 
 ## Features
 - Customize your stickers image.
